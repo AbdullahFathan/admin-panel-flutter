@@ -1,3 +1,5 @@
+import 'package:admin_panel/layout/local_navigator/local_navigator_controller.dart';
+import 'package:admin_panel/utils/helper/responsive.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -5,7 +7,7 @@ import 'package:admin_panel/config/themes/resource/color.dart';
 import 'package:admin_panel/constant/sidebar_menu.dart';
 import 'package:admin_panel/features/sidebar/sidebar_controller.dart';
 
-class HorizontalMenuItem extends GetView<SideBarController> {
+class HorizontalMenuItem extends StatelessWidget {
   const HorizontalMenuItem({
     super.key,
     required this.item,
@@ -16,9 +18,18 @@ class HorizontalMenuItem extends GetView<SideBarController> {
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
+    final controller = Get.find<SideBarController>();
 
     return InkWell(
-      onTap: () {},
+      onTap: () {
+        if (!controller.isActive(item.name)) {
+          controller.changeActiveItemTo(item.name);
+          if (ResponsiveWidget.isSmallScreen(context)) {
+            Get.back();
+          }
+          Get.find<NavigationController>().navigateTo(item.route);
+        }
+      },
       onHover: (value) {
         value
             ? controller.onHover(item.name)
@@ -26,9 +37,13 @@ class HorizontalMenuItem extends GetView<SideBarController> {
       },
       child: Obx(
         () => Container(
-          color: controller.isHovering(item.name)
-              ? AppColor.lightGrey.withOpacity(.1)
-              : Colors.transparent,
+          decoration: BoxDecoration(
+              color: controller.isActive(item.name)
+                  ? AppColor.blackColor.withOpacity(.2)
+                  : controller.isHovering(item.name)
+                      ? AppColor.lightGrey.withOpacity(.1)
+                      : Colors.transparent,
+              borderRadius: BorderRadius.circular(8)),
           child: Row(
             children: [
               Visibility(

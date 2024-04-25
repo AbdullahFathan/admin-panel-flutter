@@ -1,5 +1,5 @@
 import 'package:admin_panel/features/sidebar/sidebar_page.dart';
-import 'package:admin_panel/utils/helper/local_navigator/local_navigator.dart';
+import 'package:admin_panel/layout/local_navigator/local_navigator.dart';
 import 'package:flutter/material.dart';
 
 class LargeScreen extends StatelessWidget {

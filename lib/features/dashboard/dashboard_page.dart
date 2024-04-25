@@ -8,8 +8,8 @@ class DashBoardPage extends GetView<DashBoardController> {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder(
-      child: Text("Dashboard Page"),
+    return const Scaffold(
+      body: Center(child: Text("Dashboard Page")),
     );
   }
 }

@@ -1,3 +1,5 @@
+import 'package:admin_panel/features/product/product_page.dart';
+import 'package:admin_panel/features/user/user_page.dart';
 import 'package:flutter/material.dart';
 
 import 'package:admin_panel/features/dashboard/dashboard_page.dart';
@@ -19,5 +21,20 @@ List<MenuItem> sideMenuItems = [
     name: "Dashboard",
     route: DashBoardPage.route,
     icon: Icons.dashboard,
+  ),
+  MenuItem(
+    name: "Product",
+    route: ProductPage.route,
+    icon: Icons.shopping_bag,
+  ),
+  MenuItem(
+    name: "User",
+    route: UserPage.route,
+    icon: Icons.person,
+  ),
+  MenuItem(
+    name: "Log Out",
+    route: "",
+    icon: Icons.logout,
   ),
 ];

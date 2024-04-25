@@ -5,8 +5,10 @@ class NavigationController extends GetxController {
   static NavigationController instance = Get.find();
   final GlobalKey<NavigatorState> navigatorKey = GlobalKey();
 
-  Future<dynamic> navigateTo(String routeName) {
-    return navigatorKey.currentState!.pushNamed(routeName);
+  void navigateTo(String routeName) {
+    print("Masuk navigasi");
+    navigatorKey.currentState?.pushNamed(routeName);
+    print("keluar navigasi");
   }
 
   goBack() => navigatorKey.currentState!.pop();

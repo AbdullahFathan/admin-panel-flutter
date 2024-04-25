@@ -1,11 +1,13 @@
 import 'package:admin_panel/config/themes/resource/color.dart';
 import 'package:admin_panel/features/sidebar/sidebar_controller.dart';
+import 'package:admin_panel/layout/local_navigator/local_navigator_controller.dart';
+import 'package:admin_panel/utils/helper/responsive.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'package:admin_panel/constant/sidebar_menu.dart';
 
-class VerticalMenuItem extends GetView<SideBarController> {
+class VerticalMenuItem extends StatelessWidget {
   const VerticalMenuItem({
     super.key,
     required this.item,
@@ -15,8 +17,17 @@ class VerticalMenuItem extends GetView<SideBarController> {
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.find<SideBarController>();
     return InkWell(
-        onTap: () {},
+        onTap: () {
+          if (!controller.isActive(item.name)) {
+            controller.changeActiveItemTo(item.name);
+            if (ResponsiveWidget.isSmallScreen(context)) {
+              Get.back();
+            }
+            Get.find<NavigationController>().navigateTo(item.route);
+          }
+        },
         onHover: (value) {
           value
               ? controller.onHover(item.name)
