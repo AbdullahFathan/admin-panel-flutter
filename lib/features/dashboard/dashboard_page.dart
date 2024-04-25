@@ -1,7 +1,9 @@
+import 'package:admin_panel/features/dashboard/dashboard_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
-class DashBoardPage extends StatelessWidget {
-  static String route = "/dashboard";
+class DashBoardPage extends GetView<DashBoardController> {
+  static const String route = "/dashboard";
   const DashBoardPage({super.key});
 
   @override

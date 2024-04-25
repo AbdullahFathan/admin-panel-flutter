@@ -1,5 +1,5 @@
 import 'package:admin_panel/config/themes/resource/color.dart';
-import 'package:admin_panel/features/dashboard/dashboard_page.dart';
+import 'package:admin_panel/layout/web_layout.dart';
 import 'package:admin_panel/utils/widgets/primary_button.dart';
 import 'package:admin_panel/utils/widgets/required_text.dart';
 import 'package:flutter/material.dart';
@@ -83,7 +83,7 @@ class LoginPage extends GetView<LoginController> {
                   padding: const EdgeInsets.only(top: 22),
                   child: PrimaryButton(
                     text: "Login",
-                    onPressed: () => Get.offNamed(DashBoardPage.route),
+                    onPressed: () => Get.offNamed(SiteLayout.route),
                   ),
                 )
               ],
